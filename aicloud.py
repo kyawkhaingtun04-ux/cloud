@@ -188,7 +188,12 @@ class LiveDataEntry(BaseModel):
     objects: List[LiveObject]
 
 # ★ history 全体 
+# ★ history 全体 + location
 class LiveDataHistory(BaseModel):
+    location: Optional[str] = Field(
+        None,
+        description="Location name where this live data is captured (e.g. 'Main Tower 3F')."
+    )
     history: List[LiveDataEntry] = Field(
         ..., description="List of recent YOLO detection frames (e.g., last 10 frames)."
     )
